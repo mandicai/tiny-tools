@@ -2,20 +2,28 @@
 
 import { useState } from 'react';
 import { streamResponse } from '../../hooks/useStream';
+import ModelSelector from './ModelSelector';
 
 export default function ChatBox() {
   const [prompt, setPrompt] = useState('');
   const [output, setOutput] = useState('');
+  const [model, setModel] = useState('phi3:mini');
 
   const handleSubmit = async () => {
     setOutput('');
-    await streamResponse(prompt, (chunk) => {
+    await streamResponse(prompt, model, (chunk) => {
       setOutput((prev) => prev + chunk);
     });
   };
 
+  const handleModelChange = (newModel: string) => {
+    setModel(newModel)
+  }
+
   return (
     <div className="bg-white shadow rounded-lg p-6 mb-4">
+      <ModelSelector onModelChange={handleModelChange} />
+
       <p className="text-xl font-bold mb-2">AI Sandbox</p>
       <textarea
         className="w-full border p-2"

@@ -1,11 +1,12 @@
 // using SSE
 import { createParser } from 'eventsource-parser';
 
-export async function streamResponse(prompt: string, onData: (chunk: string) => void) {
+export async function streamResponse(prompt: string, model: string, onData: (chunk: string) => void) {
+    console.log(model)
     const response = await fetch('/api/llm', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, stream: true }),
+        body: JSON.stringify({ prompt, model, stream: true }),
     });
 
     if (!response.body) throw new Error('No response body');
