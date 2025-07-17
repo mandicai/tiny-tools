@@ -7,7 +7,7 @@ import LLMSandbox from '@/components/LLMSandbox';
 
 export default function HomePage() {
   const [currentStory, setCurrentStory] = useState('planner');
-  const nodeStory = story.find((n) => n.scenario_id === currentStory);
+  const nodeStory = story.find((n) => n.story_id === currentStory);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50">
@@ -22,8 +22,9 @@ export default function HomePage() {
         <div className="grid grid-cols-[60%_40%] gap-4">
           <div className="w-full">
             <StoryNode
-              scenario={nodeStory.scenario}
+              story={nodeStory.story}
               decisions={nodeStory.decisions}
+              setCurrentStory={setCurrentStory}
             />
           </div>
           <div className="w-full">

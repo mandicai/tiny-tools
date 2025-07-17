@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import React from 'react';
 import StoryChoices from './StoryChoices';
+import StorySelector from './StorySelector';
 
 type Choice = { text: string; next: string };
 type Decision = {
@@ -11,11 +12,12 @@ type Decision = {
   choices?: Choice[];
 }
 type Props = {
-  scenario: string;
+  story: string;
   decisions?: Decision[];
+  setCurrentStory: (story: string) => void;
 };
 
-export default function StoryNode({scenario, decisions = []}: Props) {
+export default function StoryNode({story, decisions = [], setCurrentStory}: Props) {
   const [currentId, setCurrentId] = useState('start');
   const node = decisions.find((n) => n.id === currentId);
 
@@ -28,9 +30,11 @@ export default function StoryNode({scenario, decisions = []}: Props) {
   return (
     <div>
       <div className="bg-white shadow rounded-lg p-6 mb-4">
+        <StorySelector onStoryChange={setCurrentStory} restart={restart} />
+
         <p className="text-xl font-bold mb-2">The Scenario</p>
         <p className="text-l font-serif">
-          {scenario}
+          {story}
         </p>
         <StoryChoices
           text={node.text}
