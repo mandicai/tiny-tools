@@ -24,7 +24,7 @@ export default function ChatBox() {
     <div className="bg-white shadow rounded-lg p-6 mb-4">
       <ModelSelector onModelChange={handleModelChange} />
 
-      <p className="text-xl font-bold mb-2">AI Sandbox</p>
+      <p className="text-xl font-bold mb-2">LLM Sandbox</p>
       <textarea
         className="w-full border p-2"
         value={prompt}
