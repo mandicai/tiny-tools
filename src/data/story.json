@@ -1,132 +1,138 @@
 [
     {
-        "id": "start",
-        "text": "Your first step is to explore the topic's potential angles, sources, and risks to narrow your focus. How do you structure this exploration?",
-        "choices": [
+        "scenario_id": "planner",
+        "scenario": "You are a journalist at the beginning of a new investigation. Your editor is intrigued by the rise of 'ghost kitchens' (delivery-only restaurants, often run out of warehouses or shared commissaries) in your city. The story is broad and undefined. You need to move from a vague idea to a focused, actionable project plan that you can pitch.",
+        "decisions": [
             {
-                "text": "You and a colleague use a whiteboard or digital equivalent (like Miro). You manually map out potential story threads, stakeholders, data needs, and ethical considerations.",
-                "next": "brainstorm_manual"
+                "id": "start",
+                "text": "Your first step is to explore the topic's potential angles, sources, and risks to narrow your focus. How do you structure this exploration?",
+                "choices": [
+                    {
+                        "text": "You and a colleague use a whiteboard or digital equivalent (like Miro). You manually map out potential story threads, stakeholders, data needs, and ethical considerations.",
+                        "next": "brainstorm_manual"
+                    },
+                    {
+                        "text": "Use a local AI chat interface (e.g., Open WebUI) running a versatile model via Ollama. You paste in your initial notes and then drive a structured Q&A.",
+                        "next": "brainstorm_localai"
+                    },
+                    {
+                        "text": "Paste your notes into a public AI service (e.g., ChatGPT, Perplexity) with a broad prompt like, 'Help me brainstorm an investigative series about ghost kitchens.' The AI takes the lead, offering a comprehensive overview and suggesting a structure.",
+                        "next": "brainstorm_cloudai"
+                    }
+                ]
             },
             {
-                "text": "Use a local AI chat interface (e.g., Open WebUI) running a versatile model via Ollama. You paste in your initial notes and then drive a structured Q&A.",
-                "next": "brainstorm_localai"
+                "id": "brainstorm_manual",
+                "text": "You now have a rich collection of brainstormed ideas, angles, and potential sources. You need to synthesize this into a formal, structured project plan.",
+                "choices": [
+                    {
+                        "text": "You open a new document and, drawing from your brainstorming notes, manually write the project plan from scratch. You define the sections (e.g., Core Question, Key Angles, Methods, Timeline) and populate them yourself.",
+                        "next": "synthesize_manual"
+                    },
+                    {
+                        "text": "You copy the entire transcript from your brainstorming session (manual or AI). You paste it into your local AI chat and provide a specific, structured prompt: 'From the text above, generate a project plan using the following Markdown template: ## Core Question\n## Key Angles to Investigate\n- Angle 1\n- Angle 2\n## Potential Sources\n## Risks & Mitigation.'",
+                        "next": "synthesize_localai"
+                    },
+                    {
+                        "text": "If you used a cloud AI for brainstorming, you now simply ask it 'Now, organize that into a formal project plan.' The service uses its own logic to structure the information, often presenting it in a polished, ready-to-use format.",
+                        "next": "synthesize_cloudai"
+                    }
+                ]
             },
             {
-                "text": "Paste your notes into a public AI service (e.g., ChatGPT, Perplexity) with a broad prompt like, 'Help me brainstorm an investigative series about ghost kitchens.' The AI takes the lead, offering a comprehensive overview and suggesting a structure.",
-                "next": "brainstorm_cloudai"
+                "id": "brainstorm_localai",
+                "text": "You now have a rich collection of brainstormed ideas, angles, and potential sources. You need to synthesize this into a formal, structured project plan.",
+                "choices": [
+                    {
+                        "text": "You open a new document and, drawing from your brainstorming notes, manually write the project plan from scratch. You define the sections (e.g., Core Question, Key Angles, Methods, Timeline) and populate them yourself.",
+                        "next": "synthesize_manual"
+                    },
+                    {
+                        "text": "You copy the entire transcript from your brainstorming session (manual or AI). You paste it into your local AI chat and provide a specific, structured prompt: 'From the text above, generate a project plan using the following Markdown template: ## Core Question\n## Key Angles to Investigate\n- Angle 1\n- Angle 2\n## Potential Sources\n## Risks & Mitigation.'",
+                        "next": "synthesize_localai"
+                    },
+                    {
+                        "text": "If you used a cloud AI for brainstorming, you now simply ask it 'Now, organize that into a formal project plan.' The service uses its own logic to structure the information, often presenting it in a polished, ready-to-use format.",
+                        "next": "synthesize_cloudai"
+                    }
+                ]
+            },
+            {
+                "id": "brainstorm_cloudai",
+                "text": "You now have a rich collection of brainstormed ideas, angles, and potential sources. You need to synthesize this into a formal, structured project plan.",
+                "choices": [
+                    {
+                        "text": "You open a new document and, drawing from your brainstorming notes, manually write the project plan from scratch. You define the sections (e.g., Core Question, Key Angles, Methods, Timeline) and populate them yourself.",
+                        "next": "synthesize_manual"
+                    },
+                    {
+                        "text": "You copy the entire transcript from your brainstorming session (manual or AI). You paste it into your local AI chat and provide a specific, structured prompt: 'From the text above, generate a project plan using the following Markdown template: ## Core Question\n## Key Angles to Investigate\n- Angle 1\n- Angle 2\n## Potential Sources\n## Risks & Mitigation.'",
+                        "next": "synthesize_localai"
+                    },
+                    {
+                        "text": "If you used a cloud AI for brainstorming, you now simply ask it 'Now, organize that into a formal project plan.' The service uses its own logic to structure the information, often presenting it in a polished, ready-to-use format.",
+                        "next": "synthesize_cloudai"
+                    }
+                ]
+            },
+            {
+                "id": "synthesize_manual",
+                "text": "With a structured plan in hand, you need to break it down into a list of specific, actionable tasks for the first week of reporting.",
+                "choices": [
+                    {
+                        "text": "You read through your new project plan and manually create a checklist of tasks in your preferred project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health inspection records', 'Find a driver to interview').",
+                        "next": "end"
+                    },
+                    {
+                        "text": "You feed your structured project plan back into your local AI chat with a command like: 'From the plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, focusing on the 'Key Angles' section.'",
+                        "next": "end"
+                    },
+                    {
+                        "text": "You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project plan, and the tool automatically generates a full project board with tasks, assigns priorities, suggests deadlines, and maps dependencies.",
+                        "next": "end"
+                    }
+                ]
+            },
+            {
+                "id": "synthesize_localai",
+                "text": "With a structured plan in hand, you need to break it down into a list of specific, actionable tasks for the first week of reporting.",
+                "choices": [
+                    {
+                        "text": "You read through your new project plan and manually create a checklist of tasks in your preferred project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health inspection records', 'Find a driver to interview').",
+                        "next": "end"
+                    },
+                    {
+                        "text": "You feed your structured project plan back into your local AI chat with a command like: 'From the plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, focusing on the 'Key Angles' section.'",
+                        "next": "end"
+                    },
+                    {
+                        "text": "You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project plan, and the tool automatically generates a full project board with tasks, assigns priorities, suggests deadlines, and maps dependencies.",
+                        "next": "end"
+                    }
+                ]
+            },
+            {
+                "id": "synthesize_cloudai",
+                "text": "With a structured plan in hand, you need to break it down into a list of specific, actionable tasks for the first week of reporting.",
+                "choices": [
+                    {
+                        "text": "You read through your new project plan and manually create a checklist of tasks in your preferred project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health inspection records', 'Find a driver to interview').",
+                        "next": "end"
+                    },
+                    {
+                        "text": "You feed your structured project plan back into your local AI chat with a command like: 'From the plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, focusing on the 'Key Angles' section.'",
+                        "next": "end"
+                    },
+                    {
+                        "text": "You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project plan, and the tool automatically generates a full project board with tasks, assigns priorities, suggests deadlines, and maps dependencies.",
+                        "next": "end"
+                    }
+                ]
+            },
+            {
+                "id": "end",
+                "text": "You have found the treasure and completed your adventure! Congratulations!"
             }
         ]
-    },
-    {
-        "id": "brainstorm_manual",
-        "text": "You now have a rich collection of brainstormed ideas, angles, and potential sources. You need to synthesize this into a formal, structured project plan.",
-        "choices": [
-            {
-                "text": "You open a new document and, drawing from your brainstorming notes, manually write the project plan from scratch. You define the sections (e.g., Core Question, Key Angles, Methods, Timeline) and populate them yourself.",
-                "next": "synthesize_manual"
-            },
-            {
-                "text": "You copy the entire transcript from your brainstorming session (manual or AI). You paste it into your local AI chat and provide a specific, structured prompt: 'From the text above, generate a project plan using the following Markdown template: ## Core Question\n## Key Angles to Investigate\n- Angle 1\n- Angle 2\n## Potential Sources\n## Risks & Mitigation.'",
-                "next": "synthesize_localai"
-            },
-            {
-                "text": "If you used a cloud AI for brainstorming, you now simply ask it 'Now, organize that into a formal project plan.' The service uses its own logic to structure the information, often presenting it in a polished, ready-to-use format.",
-                "next": "synthesize_cloudai"
-            }
-        ]
-    },
-    {
-        "id": "brainstorm_localai",
-        "text": "You now have a rich collection of brainstormed ideas, angles, and potential sources. You need to synthesize this into a formal, structured project plan.",
-        "choices": [
-            {
-                "text": "You open a new document and, drawing from your brainstorming notes, manually write the project plan from scratch. You define the sections (e.g., Core Question, Key Angles, Methods, Timeline) and populate them yourself.",
-                "next": "synthesize_manual"
-            },
-            {
-                "text": "You copy the entire transcript from your brainstorming session (manual or AI). You paste it into your local AI chat and provide a specific, structured prompt: 'From the text above, generate a project plan using the following Markdown template: ## Core Question\n## Key Angles to Investigate\n- Angle 1\n- Angle 2\n## Potential Sources\n## Risks & Mitigation.'",
-                "next": "synthesize_localai"
-            },
-            {
-                "text": "If you used a cloud AI for brainstorming, you now simply ask it 'Now, organize that into a formal project plan.' The service uses its own logic to structure the information, often presenting it in a polished, ready-to-use format.",
-                "next": "synthesize_cloudai"
-            }
-        ]
-    },
-    {
-        "id": "brainstorm_cloudai",
-        "text": "You now have a rich collection of brainstormed ideas, angles, and potential sources. You need to synthesize this into a formal, structured project plan.",
-        "choices": [
-            {
-                "text": "You open a new document and, drawing from your brainstorming notes, manually write the project plan from scratch. You define the sections (e.g., Core Question, Key Angles, Methods, Timeline) and populate them yourself.",
-                "next": "synthesize_manual"
-            },
-            {
-                "text": "You copy the entire transcript from your brainstorming session (manual or AI). You paste it into your local AI chat and provide a specific, structured prompt: 'From the text above, generate a project plan using the following Markdown template: ## Core Question\n## Key Angles to Investigate\n- Angle 1\n- Angle 2\n## Potential Sources\n## Risks & Mitigation.'",
-                "next": "synthesize_localai"
-            },
-            {
-                "text": "If you used a cloud AI for brainstorming, you now simply ask it 'Now, organize that into a formal project plan.' The service uses its own logic to structure the information, often presenting it in a polished, ready-to-use format.",
-                "next": "synthesize_cloudai"
-            }
-        ]
-    },
-    {
-        "id": "synthesize_manual",
-        "text": "With a structured plan in hand, you need to break it down into a list of specific, actionable tasks for the first week of reporting.",
-        "choices": [
-            {
-                "text": "You read through your new project plan and manually create a checklist of tasks in your preferred project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health inspection records', 'Find a driver to interview').",
-                "next": "end"
-            },
-            {
-                "text": "You feed your structured project plan back into your local AI chat with a command like: 'From the plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, focusing on the 'Key Angles' section.'",
-                "next": "end"
-            },
-            {
-                "text": "You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project plan, and the tool automatically generates a full project board with tasks, assigns priorities, suggests deadlines, and maps dependencies.",
-                "next": "end"
-            }
-        ]
-    },
-    {
-        "id": "synthesize_localai",
-        "text": "With a structured plan in hand, you need to break it down into a list of specific, actionable tasks for the first week of reporting.",
-        "choices": [
-            {
-                "text": "You read through your new project plan and manually create a checklist of tasks in your preferred project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health inspection records', 'Find a driver to interview').",
-                "next": "end"
-            },
-            {
-                "text": "You feed your structured project plan back into your local AI chat with a command like: 'From the plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, focusing on the 'Key Angles' section.'",
-                "next": "end"
-            },
-            {
-                "text": "You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project plan, and the tool automatically generates a full project board with tasks, assigns priorities, suggests deadlines, and maps dependencies.",
-                "next": "end"
-            }
-        ]
-    },
-    {
-        "id": "synthesize_cloudai",
-        "text": "With a structured plan in hand, you need to break it down into a list of specific, actionable tasks for the first week of reporting.",
-        "choices": [
-            {
-                "text": "You read through your new project plan and manually create a checklist of tasks in your preferred project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health inspection records', 'Find a driver to interview').",
-                "next": "end"
-            },
-            {
-                "text": "You feed your structured project plan back into your local AI chat with a command like: 'From the plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, focusing on the 'Key Angles' section.'",
-                "next": "end"
-            },
-            {
-                "text": "You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project plan, and the tool automatically generates a full project board with tasks, assigns priorities, suggests deadlines, and maps dependencies.",
-                "next": "end"
-            }
-        ]
-    },
-    {
-        "id": "end",
-        "text": "You have found the treasure and completed your adventure! Congratulations!"
-      }
+    }
 ]

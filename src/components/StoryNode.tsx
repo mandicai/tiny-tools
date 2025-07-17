@@ -1,46 +1,49 @@
 'use client';
 
+import { useState } from 'react';
 import React from 'react';
+import StoryChoices from './StoryChoices';
 
 type Choice = { text: string; next: string };
-type Props = {
+type Decision = {
+  id: string;
   text: string;
   choices?: Choice[];
-  onChoose: (id: string) => void;
+}
+type Props = {
+  scenario: string;
+  decisions?: Decision[];
 };
 
-export default function StoryNode({ text, choices = [], onChoose }: Props) {
-  const isEnding = choices.length === 0;
+export default function StoryNode({scenario, decisions = []}: Props) {
+  const [currentId, setCurrentId] = useState('start');
+  const node = decisions.find((n) => n.id === currentId);
+
+  if (!node) return <p>Something went wrong. Story node not found.</p>;
+
+  const restart = () => {
+    setCurrentId('start');
+  };
 
   return (
     <div>
       <div className="bg-white shadow rounded-lg p-6 mb-4">
         <p className="text-xl font-bold mb-2">The Scenario</p>
         <p className="text-l font-serif">
-          You are a journalist at the beginning of a new investigation. Your editor is intrigued by the rise of "ghost kitchens"
-          (delivery-only restaurants, often run out of warehouses or shared commissaries) in your city. The story is broad and undefined.
-          You need to move from a vague idea to a focused, actionable project plan that you can pitch.
+          {scenario}
         </p>
-      </div>
+        <StoryChoices
+          text={node.text}
+          choices={node.choices}
+          onChoose={setCurrentId}
+        />
 
-      <div className="bg-white shadow rounded-lg p-6">
-        <p className="text-xl font-bold mb-2">Decision</p>
-        <p className="text-l font-serif mb-4">{text}</p>
-
-
-        {isEnding ? (
-          <p className="text-center font-mono">— The End —</p>
-        ) : (
-          choices.map((choice, idx) => (
-            <button
-              key={idx}
-              onClick={() => onChoose(choice.next)}
-              className="font-mono block w-full text-left p-4 rounded my-2 bg-gray-300 hover:bg-gray-400 text-gray-800"
-            >
-              {choice.text}
-            </button>
-          ))
-        )}
+        <button
+          onClick={restart}
+          className="mt-4 w-full text-white font-bold py-2 rounded bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800"
+        >
+          Restart Adventure
+        </button>
       </div>
     </div>
   );
