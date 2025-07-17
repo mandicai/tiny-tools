@@ -19,14 +19,14 @@ export default function HomePage() {
           </div>
           <img src="/beaver.svg" alt="Beaver" className="w-30 h-auto"/>
         </div>
-        <div className="grid grid-cols-[60%_40%] gap-2">
-          <div className="max-w-2xl mx-auto space-y-6">
+        <div className="grid grid-cols-[60%_40%] gap-4">
+          <div className="w-full">
             <StoryNode
               scenario={nodeStory.scenario}
               decisions={nodeStory.decisions}
             />
           </div>
-          <div className="max-w-2xl mx-auto space-y-6">
+          <div className="w-full">
             <LLMSandbox/>
           </div>
         </div>
