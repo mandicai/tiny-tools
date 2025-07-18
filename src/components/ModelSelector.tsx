@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-const models = ['phi3:mini', 'tinyllama']
+const models = ['phi3:mini', 'tinyllama', 'gpt-4o-mini']
 
 export default function ModelSelector({ onModelChange }: { onModelChange: (model: string) => void }) {
   const [selectedModel, setSelectedModel] = useState('phi3:mini')
@@ -13,7 +13,7 @@ export default function ModelSelector({ onModelChange }: { onModelChange: (model
   }
 
   return (
-    <div className="font-mono flex gap-2 mb-4">
+    <div className="font-mono grid grid-cols-2 gap-2 mb-4">
       {models.map((model) => (
         <button
           key={model}

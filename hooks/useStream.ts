@@ -19,7 +19,6 @@ export async function streamResponse(prompt: string, model: string, onData: (chu
             if (event.event === 'end') {
                 return;
             }
-
             onData(JSON.parse(event.data).response);
         }
     });
