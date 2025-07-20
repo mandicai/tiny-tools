@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { getScenario, type Scenario } from '@/lib/scenarios';
 import StoryNode from '@/components/StoryNode';
-import LLMSandbox from '@/components/LLMSandbox';
 import IntroPage from '@/components/IntroPage';
 
 export default function HomePage() {
@@ -70,19 +69,14 @@ export default function HomePage() {
             ← Back to Intro
           </button>
         </div>
-        <div className="grid grid-cols-[60%_40%] gap-4">
-          <div className="w-full">
-            {scenario && (
-              <StoryNode
-                story={scenario.story}
-                decisions={scenario.decisions}
-                setCurrentStory={setCurrentStory}
-              />
-            )}
-          </div>
-          <div className="w-full">
-            <LLMSandbox />
-          </div>
+        <div className="w-full">
+          {scenario && (
+            <StoryNode
+              story={scenario.story}
+              decisions={scenario.decisions}
+              setCurrentStory={setCurrentStory}
+            />
+          )}
         </div>
       </div>
     </main>
