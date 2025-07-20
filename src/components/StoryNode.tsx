@@ -17,7 +17,7 @@ type Props = {
   setCurrentStory: (story: string) => void;
 };
 
-export default function StoryNode({story, decisions = [], setCurrentStory}: Props) {
+export default function StoryNode({ story, decisions = [], setCurrentStory }: Props) {
   const [currentId, setCurrentId] = useState('start');
   const node = decisions.find((n) => n.id === currentId);
 
