@@ -269,6 +269,12 @@ export const toolSuggestionsByChoice: Record<string, ToolSuggestion[]> = {
       description: "Advanced open source relational database",
       url: "https://postgresql.org/",
       category: "Database"
+    },
+    {
+      name: "DuckDB",
+      description: "Fast in-process analytical database",
+      url: "https://duckdb.org/",
+      category: "Database"
     }
   ],
   query_cloud: [
