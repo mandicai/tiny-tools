@@ -99,17 +99,17 @@ decisions:
           You read through your new project plan and manually create a checklist of tasks in your preferred 
           project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health 
           inspection records', 'Find a driver to interview').
-        next: end
+        next: taskbreak_manual
       - text: >
           You feed your structured project plan back into your local AI chat with a command like: 'From the 
           plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, 
           focusing on the 'Key Angles' section.'
-        next: end
+        next: taskbreak_localai
       - text: >
           You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project 
           plan, and the tool automatically generates a full project board with tasks, assigns priorities, 
           suggests deadlines, and maps dependencies.
-        next: end
+        next: taskbreak_aitools
 
   - id: synthesize_localai
     text: >
@@ -120,17 +120,17 @@ decisions:
           You read through your new project plan and manually create a checklist of tasks in your preferred 
           project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health 
           inspection records', 'Find a driver to interview').
-        next: end
+        next: taskbreak_manual
       - text: >
           You feed your structured project plan back into your local AI chat with a command like: 'From the 
           plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, 
           focusing on the 'Key Angles' section.'
-        next: end
+        next: taskbreak_localai
       - text: >
           You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project 
           plan, and the tool automatically generates a full project board with tasks, assigns priorities, 
           suggests deadlines, and maps dependencies.
-        next: end
+        next: taskbreak_aitools
 
   - id: synthesize_cloudai
     text: >
@@ -141,17 +141,74 @@ decisions:
           You read through your new project plan and manually create a checklist of tasks in your preferred 
           project management tool or a simple text file (e.g., 'Email Prof. Smith', 'File FOIA for health 
           inspection records', 'Find a driver to interview').
-        next: end
+        next: taskbreak_manual
       - text: >
           You feed your structured project plan back into your local AI chat with a command like: 'From the 
           plan above, generate a checklist of 5-7 concrete reporting tasks to complete in the first week, 
           focusing on the 'Key Angles' section.'
-        next: end
+        next: taskbreak_localai
       - text: >
           You use a dedicated AI project management tool (e.g., Asana AI, Motion). You import your project 
           plan, and the tool automatically generates a full project board with tasks, assigns priorities, 
           suggests deadlines, and maps dependencies.
+        next: taskbreak_aitools
+
+  - id: taskbreak_manual
+    text: >
+      You now have a solid task breakdown for your first week. Time to organize and prioritize your 
+      workflow for maximum efficiency.
+    choices:
+      - text: >
+          Arrange your tasks by priority using your own judgment, creating a simple daily schedule 
+          in a notebook or basic digital calendar.
+        next: end
+      - text: >
+          Use a project management app like Trello, Asana, or Notion to organize tasks with due dates, 
+          priority levels, and progress tracking.
+        next: end
+      - text: >
+          Apply time-blocking techniques, allocating specific hours of each day to different types of tasks 
+          (interviews, research, writing) using a calendar tool.
+        next: end
+
+  - id: taskbreak_localai
+    text: >
+      Your local AI has generated a comprehensive task breakdown. Now you need to organize and prioritize 
+      your workflow.
+    choices:
+      - text: >
+          Export the AI-generated tasks to your preferred project management tool and manually adjust 
+          priorities and timelines based on your experience.
+        next: end
+      - text: >
+          Ask your local AI to also generate a daily schedule with time estimates for each task, then 
+          import this into your calendar application.
+        next: end
+      - text: >
+          Use the AI output as a foundation and manually refine it, adding personal notes and context 
+          that only you would know about sources and logistics.
+        next: end
+
+  - id: taskbreak_aitools
+    text: >
+      The AI project management tool has created a comprehensive project board with tasks, timelines, 
+      and dependencies. Time to review and customize it.
+    choices:
+      - text: >
+          Accept the AI-generated project structure as-is and begin following the suggested workflow, 
+          trusting the algorithm's prioritization.
+        next: end
+      - text: >
+          Review and manually adjust the AI suggestions, moving tasks around based on your knowledge 
+          of source availability and practical constraints.
+        next: end
+      - text: >
+          Use the AI structure as a template but create a parallel, simplified version in your preferred 
+          tools for day-to-day tracking.
         next: end
 
   - id: end
-    text: You have found the treasure and completed your adventure! Congratulations!
+    text: >
+      You've successfully transformed a vague story idea into a structured, actionable project plan with 
+      concrete tasks and timeline. You're now ready to pitch your ghost kitchen investigation to your editor 
+      with confidence!
