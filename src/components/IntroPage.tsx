@@ -23,17 +23,40 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50">
       <div className="w-full max-w-4xl mx-auto px-4 py-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
             <img src="/beaver.svg" alt="Beaver" className="w-16 h-auto" />
             <h1 className="text-5xl font-bold font-serif">Tiny Tools for Big Impact</h1>
           </div>
-          <p className="text-xl font-serif text-gray-700 mb-2">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore interactive scenarios that demonstrate how different approaches to AI and automation 
-            can transform journalism workflows. Each scenario presents real-world challenges with 
-            multiple solution paths to compare and contrast.
-          </p>
+          <p className="text-xl font-serif text-gray-700 mb-8">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <p className="text-lg text-gray-600">
+              Explore interactive scenarios that demonstrate how different approaches to AI and automation
+              can transform journalism workflows. Each scenario presents real-world challenges with
+              multiple solution paths to compare and contrast.
+            </p>
+
+            <div className="bg-white/50 rounded-lg p-6 text-left">
+              <p className="text-lg text-gray-700 mb-4 font-medium">
+                As you navigate these scenarios, consider the following trade-offs:
+              </p>
+              <ul className="space-y-2 text-gray-600">
+                <li className="flex items-start">
+                  <span className="font-semibold text-indigo-600 mr-2">•</span>
+                  <span><strong>Control vs. Convenience</strong>: Does this approach respect your autonomy?</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-semibold text-indigo-600 mr-2">•</span>
+                  <span><strong>Privacy vs. Efficiency</strong>: How does this choice impact your data security?</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="font-semibold text-indigo-600 mr-2">•</span>
+                  <span><strong>Quality vs. Time</strong>: Where are faster outputs more desirable than slower quality checks?</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="mb-12">
@@ -56,36 +79,33 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h2 className="text-2xl font-bold font-serif mb-4">About This Project</h2>
-          <p className="text-gray-700 mb-4">
-            This interactive exploration examines how journalists can leverage different levels of AI 
-            integration in their workflows. From manual processes to local AI tools to cloud-based 
-            services, each approach offers unique trade-offs in terms of control, privacy, efficiency, 
-            and output quality.
-          </p>
-          <div className="grid md:grid-cols-3 gap-4 mt-6">
-            <div className="text-center">
-              <h3 className="font-bold mb-2">🛠️ Methodology</h3>
-              <p className="text-sm text-gray-600">Compare manual, local AI, and cloud AI approaches</p>
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold mb-2">🔒 Privacy</h3>
-              <p className="text-sm text-gray-600">Understand data security implications of each choice</p>
-            </div>
-            <div className="text-center">
-              <h3 className="font-bold mb-2">⚡ Efficiency</h3>
-              <p className="text-sm text-gray-600">Measure time investment vs. output quality</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 text-center">
-          <h3 className="text-lg font-bold font-serif mb-4">Additional Resources</h3>
-          <div className="flex justify-center space-x-6 text-indigo-600">
-            <a href="#" className="hover:underline">📖 Research Paper</a>
-            <a href="#" className="hover:underline">🛠️ Tool Repository</a>
-            <a href="#" className="hover:underline">📧 Contact Authors</a>
+        <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h2 className="text-2xl font-bold font-serif mb-6">Additional Resources</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <a
+              href="https://github.com/NHagar/awesome-tiny-tools"
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition-colors text-indigo-600 hover:text-indigo-700"
+            >
+              <span className="text-3xl mb-2">🛠️</span>
+              <span className="font-medium">Tool Repository</span>
+              <span className="text-sm text-gray-500 mt-1">Curated list of tiny tools for journalists</span>
+            </a>
+            <a
+              href="https://docs.google.com/document/d/1iDMcPJBMCAMUANaSWU-c1a3PeYmefbwAVC1l16S_YAc/"
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition-colors text-indigo-600 hover:text-indigo-700"
+            >
+              <span className="text-3xl mb-2">📖</span>
+              <span className="font-medium">SRCCON 2025 Session</span>
+              <span className="text-sm text-gray-500 mt-1">Full research and methodology</span>
+            </a>
+            <a
+              href="mailto:nicholas.hagar@northwestern.edu"
+              className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition-colors text-indigo-600 hover:text-indigo-700"
+            >
+              <span className="text-3xl mb-2">📧</span>
+              <span className="font-medium">Contact Authors</span>
+              <span className="text-sm text-gray-500 mt-1">Questions or feedback welcome</span>
+            </a>
           </div>
         </div>
       </div>
