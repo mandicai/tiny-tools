@@ -1,6 +1,6 @@
 id: analyst
 title: Data Analysis
-description: Dive into data analysis workflows for journalists. Learn how to efficiently inspect, query, and summarize large datasets to uncover compelling stories.
+description: How do you explore, clean, and summarize a large dataset quickly and accurately?
 icon: 📊
 story: >
   You've just received the city's public employee payroll data for the recently concluded fiscal year. It's a massive 

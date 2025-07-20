@@ -12,15 +12,18 @@ interface Scenario {
   decisions: any[];
 }
 
-const scenarioIds = ['planner', 'analyst'];
-
 export async function GET() {
   try {
     const scenarios: Array<{id: string, title: string, description: string, icon: string}> = [];
     
-    for (const id of scenarioIds) {
+    // Dynamically discover all YAML files in the scenarios directory
+    const scenariosDir = path.join(process.cwd(), 'src/data/scenarios');
+    const files = fs.readdirSync(scenariosDir);
+    const yamlFiles = files.filter(file => file.endsWith('.yaml'));
+    
+    for (const file of yamlFiles) {
       try {
-        const scenarioPath = path.join(process.cwd(), 'src/data/scenarios', `${id}.yaml`);
+        const scenarioPath = path.join(scenariosDir, file);
         const fileContents = fs.readFileSync(scenarioPath, 'utf8');
         const scenario = yaml.load(fileContents) as Scenario;
         
@@ -31,7 +34,7 @@ export async function GET() {
           icon: scenario.icon
         });
       } catch (error) {
-        console.error(`Error loading scenario ${id}:`, error);
+        console.error(`Error loading scenario ${file}:`, error);
       }
     }
     

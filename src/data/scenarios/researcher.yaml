@@ -1,0 +1,144 @@
+id: researcher
+title: Investigative Research
+description: When you have a major leak, how do you extract and organize critical information without compromising security?
+icon: 🔬
+story: >
+  You have received a major leak: a 500-page internal report from a tech giant detailing safety failures in 
+  their flagship self-driving car program. The document is a scanned PDF and is highly sensitive. You cannot 
+  risk uploading it to any third-party service. Your goal is to go beyond a simple summary and create a "reading 
+  roadmap" that points you to the most critical sections, people, and findings relevant to your investigation.
+
+decisions:
+  - id: start
+    text: >
+      Your source is a scanned PDF, which is just an image of text. To work with it, you must first extract 
+      the text into a machine-readable format. How do you do this securely?
+    choices:
+      - text: >
+          Open the PDF and manually retype or copy-paste the text page by page into a new document.
+        next: ocr_manual
+      - text: >
+          Use a local OCR tool like Tesseract or Adobe Acrobat Pro to create a plain text file on your computer.
+        next: ocr_local
+      - text: >
+          Upload the sensitive PDF to a public cloud service like Google Drive to use its built-in OCR.
+        next: ocr_cloud
+
+  - id: ocr_manual
+    text: >
+      You now have a 500-page wall of text. How do you find the specific sections relevant to your questions 
+      without reading the whole thing?
+    choices:
+      - text: >
+          Use your text editor's search function (Ctrl+F) to methodically look for keywords.
+        next: find_manual
+      - text: >
+          Use a local RAG tool (like privateGPT) to index the report and ask your key questions directly.
+        next: find_rag
+      - text: >
+          Upload the text file to a cloud LLM service and ask it to find all relevant sections.
+        next: find_cloud
+
+  - id: ocr_local
+    text: >
+      Your local OCR tool created a text file. How do you find the specific sections relevant to your questions 
+      without reading the whole 500-page document?
+    choices:
+      - text: >
+          Use your text editor's search function (Ctrl+F) to methodically look for keywords.
+        next: find_manual
+      - text: >
+          Use a local RAG tool (like privateGPT) to index the report and ask your key questions directly.
+        next: find_rag
+      - text: >
+          Upload the text file to a cloud LLM service and ask it to find all relevant sections.
+        next: find_cloud
+
+  - id: ocr_cloud
+    text: >
+      The cloud service has extracted the text. How do you find the specific sections relevant to your questions 
+      without reading the whole thing?
+    choices:
+      - text: >
+          Use your text editor's search function (Ctrl+F) to methodically look for keywords.
+        next: find_manual
+      - text: >
+          Use a local RAG tool (like privateGPT) to index the report and ask your key questions directly.
+        next: find_rag
+      - text: >
+          Ask the cloud LLM service to find all relevant sections based on your questions.
+        next: find_cloud
+
+  - id: find_manual
+    text: >
+      You've identified the most relevant sections. Now you need to pull out structured information like names 
+      and dates to build a timeline.
+    choices:
+      - text: >
+          Read the relevant sections and manually copy-paste names and dates into a spreadsheet.
+        next: extract_manual
+      - text: >
+          Feed each relevant text chunk to a local LLM with a prompt to extract names and dates as JSON.
+        next: extract_ner
+      - text: >
+          Ask a cloud AI service to create a table of people and a timeline from the sections.
+        next: extract_cloud
+
+  - id: find_rag
+    text: >
+      Your local tool has surfaced the most relevant chunks of text. Now you need to pull out structured 
+      information like names and dates.
+    choices:
+      - text: >
+          Read the relevant sections and manually copy-paste names and dates into a spreadsheet.
+        next: extract_manual
+      - text: >
+          Feed each relevant text chunk to a local LLM with a prompt to extract names and dates as JSON.
+        next: extract_ner
+      - text: >
+          Ask a cloud AI service to create a table of people and a timeline from the sections.
+        next: extract_cloud
+
+  - id: find_cloud
+    text: >
+      The cloud AI has highlighted relevant sections. Now you need to pull out structured information like names 
+      and dates to build a timeline.
+    choices:
+      - text: >
+          Read the relevant sections and manually copy-paste names and dates into a spreadsheet.
+        next: extract_manual
+      - text: >
+          Feed each relevant text chunk to a local LLM with a prompt to extract names and dates as JSON.
+        next: extract_ner
+      - text: >
+          Ask the cloud AI service to create a table of people and a timeline from the sections.
+        next: extract_cloud
+
+  - id: extract_manual
+    text: >
+      You've meticulously built your own list of key entities. It was labor-intensive, but you have high 
+      confidence in the accuracy and total control over the data.
+    choices:
+      - text: Finish the adventure.
+        next: end
+
+  - id: extract_ner
+    text: >
+      Your local LLM script efficiently extracted the key names and dates, creating a structured list that 
+      serves as a powerful roadmap for your investigation, all while keeping the data secure.
+    choices:
+      - text: Finish the adventure.
+        next: end
+
+  - id: extract_cloud
+    text: >
+      The cloud AI instantly generated a detailed timeline and list of personnel, but at the cost of uploading 
+      sensitive, leaked data to a third-party server.
+    choices:
+      - text: Finish the adventure.
+        next: end
+
+  - id: end
+    text: >
+      With your "Reading Roadmap & Key Entities List" complete, you can now conduct a deep, focused read of 
+      the report, armed with the knowledge of where the most critical information lies.
