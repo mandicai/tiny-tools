@@ -25,7 +25,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
       <div className="w-full max-w-4xl mx-auto px-4 py-8">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-4 mb-6">
-            <img src="/beaver.svg" alt="Beaver" className="w-16 h-auto" />
+            <img src="/beaver.svg" alt="Tiny Tools for Big Impact logo" className="w-16 h-auto" />
             <h1 className="text-5xl font-bold font-serif">Tiny Tools for Big Impact</h1>
           </div>
           <p className="text-xl font-serif text-gray-700 mb-8">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
