@@ -6,7 +6,7 @@ type Choice = { text: string; next: string };
 type Props = {
     text: string;
     choices?: Choice[];
-    onChoose: (id: string) => void;
+    onChoose: (id: string, choiceText: string) => void;
 };
 
 export default function StoryChoices({ text, choices = [], onChoose }: Props) {
@@ -24,7 +24,7 @@ export default function StoryChoices({ text, choices = [], onChoose }: Props) {
                 choices.map((choice, idx) => (
                     <button
                         key={idx}
-                        onClick={() => onChoose(choice.next)}
+                        onClick={() => onChoose(choice.next, choice.text)}
                         className="font-mono block w-full text-left p-4 rounded my-2 bg-gray-300 hover:bg-gray-400 text-gray-800"
                     >
                         {choice.text}
