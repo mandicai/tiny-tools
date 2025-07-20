@@ -1,24 +1,37 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { getScenarioMeta, type ScenarioMeta } from '@/lib/scenarios';
+
 interface IntroPageProps {
   onStartScenario: (scenarioId: string) => void;
 }
 
 export default function IntroPage({ onStartScenario }: IntroPageProps) {
-  const scenarios = [
-    {
-      id: 'planner',
-      title: 'Project Planning',
-      description: 'Navigate the complexities of investigative journalism project planning. Explore different approaches to brainstorming, structuring, and organizing your next big story.',
-      icon: '📋'
-    },
-    {
-      id: 'analyst',
-      title: 'Data Analysis',
-      description: 'Dive into data analysis workflows for journalists. Learn how to efficiently inspect, query, and summarize large datasets to uncover compelling stories.',
-      icon: '📊'
+  const [scenarios, setScenarios] = useState<ScenarioMeta[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadScenarios() {
+      try {
+        const scenarioMeta = await getScenarioMeta();
+        setScenarios(scenarioMeta);
+      } catch (error) {
+        console.error('Error loading scenarios:', error);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+    loadScenarios();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50 flex items-center justify-center">
+        <div className="text-lg text-gray-600">Loading scenarios...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50">
