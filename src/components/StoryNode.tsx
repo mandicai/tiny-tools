@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import StoryChoices from './StoryChoices';
 import StorySelector from './StorySelector';
@@ -28,6 +28,20 @@ export default function StoryNode({ story, decisions = [], setCurrentStory }: Pr
   const [currentId, setCurrentId] = useState('start');
   const [choiceHistory, setChoiceHistory] = useState<ChoiceHistory[]>([]);
   const [selectedTools, setSelectedTools] = useState<ToolSuggestion[]>([]);
+  const [allSuggestedTools, setAllSuggestedTools] = useState<ToolSuggestion[]>([]);
+  
+  // Initialize suggestions for the current step when it changes
+  useEffect(() => {
+    const currentStepSuggestions = getToolSuggestionsForChoice(currentId);
+    if (currentStepSuggestions.length > 0) {
+      setAllSuggestedTools(prev => {
+        const existingNames = new Set(prev.map(tool => tool.name));
+        const uniqueNewSuggestions = currentStepSuggestions.filter(tool => !existingNames.has(tool.name));
+        return [...prev, ...uniqueNewSuggestions];
+      });
+    }
+  }, [currentId]);
+
   const node = decisions.find((n) => n.id === currentId);
 
   if (!node) return <p>Something went wrong. Story node not found.</p>;
@@ -41,6 +55,7 @@ export default function StoryNode({ story, decisions = [], setCurrentStory }: Pr
         nodeText: currentNode.text
       }]);
     }
+    
     setCurrentId(nextId);
   };
 
@@ -48,6 +63,7 @@ export default function StoryNode({ story, decisions = [], setCurrentStory }: Pr
     setCurrentId('start');
     setChoiceHistory([]);
     setSelectedTools([]);
+    setAllSuggestedTools([]);
   };
 
   const handleToolSelect = (tool: ToolSuggestion) => {
@@ -60,7 +76,9 @@ export default function StoryNode({ story, decisions = [], setCurrentStory }: Pr
     setSelectedTools(prev => prev.filter(t => t.name !== tool.name));
   };
 
-  const currentToolSuggestions = getToolSuggestionsForChoice(currentId);
+  // Filter out tools that are already in the toolkit from suggestions
+  const selectedToolNames = new Set(selectedTools.map(tool => tool.name));
+  const displayedToolSuggestions = allSuggestedTools.filter(tool => !selectedToolNames.has(tool.name));
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
@@ -90,7 +108,7 @@ export default function StoryNode({ story, decisions = [], setCurrentStory }: Pr
         <ScenarioSidebar
           choiceHistory={choiceHistory}
           currentNodeId={currentId}
-          toolSuggestions={currentToolSuggestions}
+          toolSuggestions={displayedToolSuggestions}
           selectedTools={selectedTools}
           onToolSelect={handleToolSelect}
           onToolRemove={handleToolRemove}
