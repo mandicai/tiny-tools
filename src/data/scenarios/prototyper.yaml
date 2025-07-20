@@ -1,0 +1,144 @@
+id: prototyper
+title: Workflow Prototyping
+description: How do you move from one-off scripts to robust, reusable workflows?
+icon: ⚙️
+story: >
+  You're the data specialist in your newsroom, and you've just created a powerful script that pulls daily air 
+  quality data and analyzes it for anomalies. To empower your colleagues, you need to turn this one-off script 
+  into a robust, reusable workflow. Your goal is to create a documented and organized process that anyone can 
+  run, culminating in a simple, internal webpage displaying the results.
+
+decisions:
+  - id: start
+    text: >
+      Your script produces a results.csv file, but your colleagues need to see it on a webpage. How do you 
+      build the bridge between your data analysis and a web browser?
+    choices:
+      - text: >
+          Write a web server from scratch using a Python library like Flask or FastAPI.
+        next: connect_manual
+      - text: >
+          Use a local LLM as a coding assistant to generate a simple Python Flask script.
+        next: connect_llm
+      - text: >
+          Use a no-code platform to automatically populate a web dashboard when the CSV is created.
+        next: connect_nocode
+
+  - id: connect_manual
+    text: >
+      Your workflow now has multiple steps (run the script, start the server). A colleague needs to be able to 
+      understand and execute it. How do you create clear instructions?
+    choices:
+      - text: >
+          Create a README.md file and write detailed documentation from scratch.
+        next: doc_manual
+      - text: >
+          Use a local LLM to generate a well-formatted README.md file from your scripts.
+        next: doc_llm
+      - text: >
+          Use a tool like Sphinx to auto-generate a documentation website from comments in your code.
+        next: doc_generator
+
+  - id: connect_llm
+    text: >
+      Your workflow now has multiple steps (run the script, start the server). A colleague needs to be able to 
+      understand and execute it. How do you create clear instructions?
+    choices:
+      - text: >
+          Create a README.md file and write detailed documentation from scratch.
+        next: doc_manual
+      - text: >
+          Use a local LLM to generate a well-formatted README.md file from your scripts.
+        next: doc_llm
+      - text: >
+          Use a tool like Sphinx to auto-generate a documentation website from comments in your code.
+        next: doc_generator
+
+  - id: connect_nocode
+    text: >
+      Your workflow now has multiple steps. A colleague needs to be able to understand and execute it. How do 
+      you create clear instructions?
+    choices:
+      - text: >
+          Create a README.md file and write detailed documentation from scratch.
+        next: doc_manual
+      - text: >
+          Use a local LLM to generate a well-formatted README.md file from your scripts.
+        next: doc_llm
+      - text: >
+          Use a tool like Sphinx to auto-generate a documentation website from comments in your code.
+        next: doc_generator
+
+  - id: doc_manual
+    text: >
+      Each time the workflow runs, it produces outputs like results.csv and log files. How do you create an 
+      organized folder structure for each run to avoid chaos?
+    choices:
+      - text: >
+          Instruct the user in the documentation to manually create a new, dated folder for each run.
+        next: structure_manual
+      - text: >
+          Use a local LLM to generate a shell script that automates creating a dated directory and moving files.
+        next: structure_llm
+      - text: >
+          Rewrite the workflow using a scientific workflow engine that automatically manages inputs and outputs.
+        next: structure_engine
+
+  - id: doc_llm
+    text: >
+      Each time the workflow runs, it produces outputs like results.csv and log files. How do you create an 
+      organized folder structure for each run to avoid chaos?
+    choices:
+      - text: >
+          Instruct the user in the documentation to manually create a new, dated folder for each run.
+        next: structure_manual
+      - text: >
+          Use a local LLM to generate a shell script that automates creating a dated directory and moving files.
+        next: structure_llm
+      - text: >
+          Rewrite the workflow using a scientific workflow engine that automatically manages inputs and outputs.
+        next: structure_engine
+
+  - id: doc_generator
+    text: >
+      Each time the workflow runs, it produces outputs like results.csv and log files. How do you create an 
+      organized folder structure for each run to avoid chaos?
+    choices:
+      - text: >
+          Instruct the user in the documentation to manually create a new, dated folder for each run.
+        next: structure_manual
+      - text: >
+          Use a local LLM to generate a shell script that automates creating a dated directory and moving files.
+        next: structure_llm
+      - text: >
+          Rewrite the workflow using a scientific workflow engine that automatically manages inputs and outputs.
+        next: structure_engine
+
+  - id: structure_manual
+    text: >
+      Your workflow relies on manual organization. It's simple and requires no extra tools, but depends on the 
+      user following instructions perfectly every time.
+    choices:
+      - text: Finish the adventure.
+        next: end
+
+  - id: structure_llm
+    text: >
+      With a simple wrapper script, your workflow is now self-organizing. A single command handles everything, 
+      making it robust and easy for colleagues to use.
+    choices:
+      - text: Finish the adventure.
+        next: end
+
+  - id: structure_engine
+    text: >
+      By adopting a workflow engine, your process is now incredibly robust, reproducible, and scalable, though 
+      it required learning a new, specialized tool.
+    choices:
+      - text: Finish the adventure.
+        next: end
+
+  - id: end
+    text: >
+      You've successfully transformed your script into a professional, reusable workflow. Your newsroom colleagues 
+      can now easily run your analysis and see the results, amplifying the impact of your work.

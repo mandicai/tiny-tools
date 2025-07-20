@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import story from '@/data/story.json';
+import { useState, useEffect } from 'react';
+import { getScenario, type Scenario } from '@/lib/scenarios';
 import StoryNode from '@/components/StoryNode';
 import LLMSandbox from '@/components/LLMSandbox';
 import IntroPage from '@/components/IntroPage';
@@ -9,8 +9,25 @@ import IntroPage from '@/components/IntroPage';
 export default function HomePage() {
   const [currentStory, setCurrentStory] = useState<string | null>(null);
   const [showIntro, setShowIntro] = useState(true);
-  
-  const nodeStory = currentStory ? story.find((n) => n.story_id === currentStory) : null;
+  const [scenario, setScenario] = useState<Scenario | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function loadScenario() {
+      if (currentStory) {
+        setLoading(true);
+        try {
+          const loadedScenario = await getScenario(currentStory);
+          setScenario(loadedScenario);
+        } catch (error) {
+          console.error('Error loading scenario:', error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    }
+    loadScenario();
+  }, [currentStory]);
 
   const handleStartScenario = (scenarioId: string) => {
     setCurrentStory(scenarioId);
@@ -20,10 +37,19 @@ export default function HomePage() {
   const handleBackToIntro = () => {
     setShowIntro(true);
     setCurrentStory(null);
+    setScenario(null);
   };
 
   if (showIntro) {
     return <IntroPage onStartScenario={handleStartScenario} />;
+  }
+
+  if (loading) {
+    return (
+      <main className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50 flex items-center justify-center">
+        <div className="text-lg text-gray-600">Loading scenario...</div>
+      </main>
+    );
   }
 
   return (
@@ -46,10 +72,10 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-[60%_40%] gap-4">
           <div className="w-full">
-            {nodeStory && (
+            {scenario && (
               <StoryNode
-                story={nodeStory.story}
-                decisions={nodeStory.decisions}
+                story={scenario.story}
+                decisions={scenario.decisions}
                 setCurrentStory={setCurrentStory}
               />
             )}
