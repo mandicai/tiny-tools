@@ -84,6 +84,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
           <div className="grid md:grid-cols-3 gap-6">
             <a
               href="https://github.com/NHagar/awesome-tiny-tools"
+              target="_blank" rel="noopener noreferrer"
               className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition-colors text-indigo-600 hover:text-indigo-700"
             >
               <span className="text-3xl mb-2">🛠️</span>
