@@ -93,6 +93,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
             </a>
             <a
               href="https://docs.google.com/document/d/1iDMcPJBMCAMUANaSWU-c1a3PeYmefbwAVC1l16S_YAc/"
+              rel="noopener noreferrer"
               className="flex flex-col items-center p-4 rounded-lg hover:bg-gray-50 transition-colors text-indigo-600 hover:text-indigo-700"
             >
               <span className="text-3xl mb-2">📖</span>
