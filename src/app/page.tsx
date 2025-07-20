@@ -35,7 +35,7 @@ export default function HomePage() {
               <p className="text-4xl font-bold font-serif">Tiny Tools for Big Impact</p>
               <p className="text-l font-serif pt-2">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
             </div>
-            <img src="/beaver.svg" alt="Beaver" className="w-30 h-auto" />
+            <img src="/beaver.svg" alt="Tiny Tools for Big Impact logo featuring a beaver" className="w-30 h-auto" />
           </div>
           <button
             onClick={handleBackToIntro}
