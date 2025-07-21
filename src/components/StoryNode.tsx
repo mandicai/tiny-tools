@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import StoryChoices from './StoryChoices';
-import StorySelector from './StorySelector';
 import ScenarioSidebar from './ScenarioSidebar';
 import { getToolSuggestionsForChoice, type ToolSuggestion } from '@/data/toolSuggestions';
 
@@ -21,10 +20,9 @@ type ChoiceHistory = {
 type Props = {
   story: string;
   decisions?: Decision[];
-  setCurrentStory: (story: string) => void;
 };
 
-export default function StoryNode({ story, decisions = [], setCurrentStory }: Props) {
+export default function StoryNode({ story, decisions = [] }: Props) {
   const [currentId, setCurrentId] = useState('start');
   const [choiceHistory, setChoiceHistory] = useState<ChoiceHistory[]>([]);
   const [selectedTools, setSelectedTools] = useState<ToolSuggestion[]>([]);
@@ -84,8 +82,6 @@ export default function StoryNode({ story, decisions = [], setCurrentStory }: Pr
     <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
       <div>
         <div className="bg-white shadow rounded-lg p-6 mb-4">
-          <StorySelector onStoryChange={setCurrentStory} restart={restart} />
-
           <p className="text-xl font-bold mb-2">The Scenario</p>
           <p className="text-l font-serif">
             {story}
