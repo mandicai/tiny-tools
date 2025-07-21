@@ -44,7 +44,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
           <p className="text-xl font-serif text-gray-700 mb-8">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
 
           <div className="max-w-3xl mx-auto space-y-6">
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 text-left">
               Explore interactive scenarios that demonstrate how different approaches to AI and automation
               can transform journalism workflows. Each scenario presents real-world challenges with
               multiple solution paths to compare and contrast.
@@ -102,7 +102,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
             >
               <span className="text-3xl mb-2">🛠️</span>
               <span className="font-medium">Tool Repository</span>
-              <span className="text-sm text-gray-500 mt-1">Curated list of tiny tools for journalists</span>
+              <span className="text-sm text-gray-500 mt-1">Curated list of tiny tools</span>
             </a>
             <a
               href="https://docs.google.com/document/d/1iDMcPJBMCAMUANaSWU-c1a3PeYmefbwAVC1l16S_YAc/"
@@ -111,7 +111,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
             >
               <span className="text-3xl mb-2">📖</span>
               <span className="font-medium">SRCCON 2025 Session</span>
-              <span className="text-sm text-gray-500 mt-1">Full research and methodology</span>
+              <span className="text-sm text-gray-500 mt-1">Original presentation of this work</span>
             </a>
             <a
               href="mailto:nicholas.hagar@northwestern.edu"

@@ -107,7 +107,6 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
       <div>
         <ScenarioSidebar
           choiceHistory={choiceHistory}
-          currentNodeId={currentId}
           toolSuggestions={displayedToolSuggestions}
           selectedTools={selectedTools}
           onToolSelect={handleToolSelect}

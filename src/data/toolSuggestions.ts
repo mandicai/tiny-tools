@@ -533,6 +533,20 @@ export const toolSuggestionsByChoice: Record<string, ToolSuggestion[]> = {
       category: "Text Editor"
     },
   ],
+  doc_llm: [
+    {
+      name: "Ollama",
+      description: "Run large language models locally",
+      url: "https://ollama.ai/",
+      category: "LLM"
+    },
+    {
+      name: "Cline",
+      description: "AI pair programmer (supports Ollama)",
+      url: "https://cline.bot/",
+      category: "LLM"
+    }
+  ],
   doc_generator: [
     {
       name: "Pandoc",
