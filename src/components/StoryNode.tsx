@@ -20,9 +20,10 @@ type ChoiceHistory = {
 type Props = {
   story: string;
   decisions?: Decision[];
+  scenarioTitle?: string;
 };
 
-export default function StoryNode({ story, decisions = [] }: Props) {
+export default function StoryNode({ story, decisions = [], scenarioTitle = '' }: Props) {
   const [currentId, setCurrentId] = useState('start');
   const [choiceHistory, setChoiceHistory] = useState<ChoiceHistory[]>([]);
   const [selectedTools, setSelectedTools] = useState<ToolSuggestion[]>([]);
@@ -90,6 +91,9 @@ export default function StoryNode({ story, decisions = [] }: Props) {
             text={node.text}
             choices={node.choices}
             onChoose={handleChoiceSelect}
+            choiceHistory={choiceHistory}
+            selectedTools={selectedTools}
+            scenarioTitle={scenarioTitle}
           />
 
           <button

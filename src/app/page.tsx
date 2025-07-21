@@ -74,7 +74,7 @@ export default function HomePage() {
             <StoryNode
               story={scenario.story}
               decisions={scenario.decisions}
-              setCurrentStory={setCurrentStory}
+              scenarioTitle={scenario.title}
             />
           )}
         </div>
