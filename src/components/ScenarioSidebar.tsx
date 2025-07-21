@@ -35,7 +35,6 @@ export default function ScenarioSidebar({
   const [isLMDropdownOpen, setIsLMDropdownOpen] = useState(false);
 
   return (
-
     <div className="bg-white shadow rounded-lg p-6 h-fit">
       {/* Language Models Info */}
       <div className="mb-6">
