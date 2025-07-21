@@ -28,7 +28,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
   const [choiceHistory, setChoiceHistory] = useState<ChoiceHistory[]>([]);
   const [selectedTools, setSelectedTools] = useState<ToolSuggestion[]>([]);
   const [allSuggestedTools, setAllSuggestedTools] = useState<ToolSuggestion[]>([]);
-  
+
   // Initialize suggestions for the current step when it changes
   useEffect(() => {
     const currentStepSuggestions = getToolSuggestionsForChoice(currentId);
@@ -54,7 +54,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
         nodeText: currentNode.text
       }]);
     }
-    
+
     setCurrentId(nextId);
   };
 

@@ -6,15 +6,15 @@ import ToolPlacemat from './ToolPlacemat';
 
 type Choice = { text: string; next: string };
 type ChoiceHistory = {
-  nodeId: string;
-  choiceText: string;
-  nodeText: string;
+    nodeId: string;
+    choiceText: string;
+    nodeText: string;
 };
 type ToolSuggestion = {
-  name: string;
-  description: string;
-  url: string;
-  category: string;
+    name: string;
+    description: string;
+    url: string;
+    category: string;
 };
 type Props = {
     text: string;
@@ -25,13 +25,13 @@ type Props = {
     scenarioTitle?: string;
 };
 
-export default function StoryChoices({ 
-    text, 
-    choices = [], 
-    onChoose, 
-    choiceHistory = [], 
-    selectedTools = [], 
-    scenarioTitle = '' 
+export default function StoryChoices({
+    text,
+    choices = [],
+    onChoose,
+    choiceHistory = [],
+    selectedTools = [],
+    scenarioTitle = ''
 }: Props) {
     const isEnding = choices.length === 0;
 
@@ -44,16 +44,16 @@ export default function StoryChoices({
                 <div>
                     <div className="text-center mb-6">
                         <p className="text-2xl font-bold text-green-600 mb-2">🎉 Scenario Complete! 🎉</p>
-                        <p className="text-gray-600">You&rsquo;ve successfully navigated through the scenario.</p>
+                        <p className="text-gray-600">You've successfully navigated through the scenario.</p>
                         <p className="text-gray-600">Here are your personalized artifacts:</p>
                     </div>
-                    
-                    <WorkflowDiagram 
+
+                    <WorkflowDiagram
                         choiceHistory={choiceHistory}
                         scenarioTitle={scenarioTitle}
                     />
-                    
-                    <ToolPlacemat 
+
+                    <ToolPlacemat
                         selectedTools={selectedTools}
                         scenarioTitle={scenarioTitle}
                     />
