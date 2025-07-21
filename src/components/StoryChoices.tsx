@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import WorkflowDiagram from './WorkflowDiagram';
 import ToolPlacemat from './ToolPlacemat';
 
 type Choice = { text: string; next: string };
@@ -37,26 +36,47 @@ export default function StoryChoices({
 
     return (
         <div className="mt-4">
-            <p className="text-xl font-bold mb-2">Decision</p>
-            <p className="text-l font-serif mb-4">{text}</p>
+            {!isEnding && (
+                <>
+                    <p className="text-xl font-bold mb-2">Decision</p>
+                    <p className="text-l font-serif mb-4">{text}</p>
+                </>
+            )}
 
             {isEnding ? (
-                <div>
-                    <div className="text-center mb-6">
-                        <p className="text-2xl font-bold text-green-600 mb-2">🎉 Scenario Complete! 🎉</p>
-                        <p className="text-gray-600">You've successfully navigated through the scenario.</p>
-                        <p className="text-gray-600">Here are your personalized artifacts:</p>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+                            <h3 className="text-lg font-bold mb-4">Your Journey</h3>
+                            <div className="space-y-4">
+                                {choiceHistory.length === 0 ? (
+                                    <p className="text-gray-500 text-sm italic">No choices were made</p>
+                                ) : (
+                                    choiceHistory.map((choice, index) => (
+                                        <div key={index} className="bg-white rounded-lg p-4 border-l-4 border-indigo-400 shadow-sm">
+                                            <div className="flex items-start space-x-3">
+                                                <div className="flex-shrink-0 w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
+                                                    <span className="text-white font-bold text-sm">{index + 1}</span>
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="text-sm font-medium text-gray-800 mb-2">{choice.nodeText}</div>
+                                                    <div className="text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg font-mono">
+                                                        ✓ {choice.choiceText}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
                     </div>
-
-                    <WorkflowDiagram
-                        choiceHistory={choiceHistory}
-                        scenarioTitle={scenarioTitle}
-                    />
-
-                    <ToolPlacemat
-                        selectedTools={selectedTools}
-                        scenarioTitle={scenarioTitle}
-                    />
+                    <div>
+                        <ToolPlacemat
+                            selectedTools={selectedTools}
+                            scenarioTitle={scenarioTitle}
+                        />
+                    </div>
                 </div>
             ) : (
                 <div className="space-y-3">

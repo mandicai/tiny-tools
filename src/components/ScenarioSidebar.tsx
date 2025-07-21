@@ -199,16 +199,6 @@ export default function ScenarioSidebar({
                 ))
               )}
             </div>
-            {selectedTools.length > 0 && (
-              <div className="border-t border-purple-200 p-3 bg-purple-25">
-                <div className="text-sm font-medium text-gray-700">
-                  Total Tools: {selectedTools.length}
-                </div>
-                <div className="text-xs text-gray-500 mt-1">
-                  {new Set(selectedTools.map(t => t.category)).size} categories
-                </div>
-              </div>
-            )}
           </div>
         )}
       </div>

@@ -79,6 +79,39 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
   const selectedToolNames = new Set(selectedTools.map(tool => tool.name));
   const displayedToolSuggestions = allSuggestedTools.filter(tool => !selectedToolNames.has(tool.name));
 
+  const isCompleted = !node.choices || node.choices.length === 0;
+
+  if (isCompleted) {
+    // Completion view - no sidebar, artifacts side by side
+    return (
+      <div className="max-w-6xl mx-auto">
+        <div className="bg-white shadow rounded-lg p-8 mb-6">
+          <div className="text-center mb-8">
+            <p className="text-2xl font-bold text-green-600 mb-4">🎉 Scenario Complete! 🎉</p>
+            <p className="text-lg font-serif text-gray-700">{node.text}</p>
+          </div>
+          
+          <button
+            onClick={restart}
+            className="w-full max-w-md mx-auto block text-white font-bold py-3 px-6 rounded bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 transition-all"
+          >
+            Restart Adventure
+          </button>
+        </div>
+        
+        <StoryChoices
+          text=""
+          choices={[]}
+          onChoose={handleChoiceSelect}
+          choiceHistory={choiceHistory}
+          selectedTools={selectedTools}
+          scenarioTitle={scenarioTitle}
+        />
+      </div>
+    );
+  }
+
+  // Normal view with sidebar
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
       <div>
