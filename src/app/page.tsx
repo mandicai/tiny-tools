@@ -59,6 +59,35 @@ export default function HomePage() {
             ← Back to Intro
           </button>
         </div>
+
+        <div className="max-w-3xl mx-auto mb-8 space-y-6">
+          <p className="text-lg text-gray-600 text-left">
+            Explore interactive scenarios that demonstrate how different approaches to AI and automation
+            can transform journalism workflows. Each scenario presents real-world challenges with
+            multiple solution paths to compare and contrast.
+          </p>
+
+          <div className="bg-white/50 rounded-lg p-6 text-left">
+            <p className="text-lg text-gray-700 mb-4 font-medium">
+              As you navigate these scenarios, consider the following trade-offs:
+            </p>
+            <ul className="space-y-2 text-gray-600">
+              <li className="flex items-start">
+                <span className="font-semibold text-indigo-600 mr-2">•</span>
+                <span><strong>Control vs. Convenience</strong>: Does this approach respect your autonomy?</span>
+              </li>
+              <li className="flex items-start">
+                <span className="font-semibold text-indigo-600 mr-2">•</span>
+                <span><strong>Privacy vs. Efficiency</strong>: How does this choice impact your data security?</span>
+              </li>
+              <li className="flex items-start">
+                <span className="font-semibold text-indigo-600 mr-2">•</span>
+                <span><strong>Quality vs. Time</strong>: Where are faster outputs more desirable than slower quality checks?</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div className="w-full">
           {scenario && (
             <StoryNode
