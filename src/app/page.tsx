@@ -1,41 +1,31 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getScenario, type Scenario } from '@/lib/scenarios';
 import StoryNode from '@/components/StoryNode';
 import IntroPage from '@/components/IntroPage';
 
 export default function HomePage() {
-  const [currentStory, setCurrentStory] = useState<string | null>(null);
   const [showIntro, setShowIntro] = useState(true);
   const [scenario, setScenario] = useState<Scenario | null>(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    async function loadScenario() {
-      if (currentStory) {
-        setLoading(true);
-        try {
-          const loadedScenario = await getScenario(currentStory);
-          setScenario(loadedScenario);
-        } catch (error) {
-          console.error('Error loading scenario:', error);
-        } finally {
-          setLoading(false);
-        }
-      }
-    }
-    loadScenario();
-  }, [currentStory]);
 
-  const handleStartScenario = (scenarioId: string) => {
-    setCurrentStory(scenarioId);
-    setShowIntro(false);
+  const handleStartScenario = async (scenarioId: string) => {
+    setLoading(true);
+    try {
+      const loadedScenario = await getScenario(scenarioId);
+      setScenario(loadedScenario);
+      setShowIntro(false);
+    } catch (error) {
+      console.error('Error loading scenario:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleBackToIntro = () => {
     setShowIntro(true);
-    setCurrentStory(null);
     setScenario(null);
   };
 
