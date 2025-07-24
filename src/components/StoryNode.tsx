@@ -161,6 +161,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
       <div>
         <ScenarioSidebar
           toolSuggestions={displayedToolSuggestions}
+          allSuggestedTools={allSuggestedTools}
           selectedTools={selectedTools}
           onToolSelect={handleToolSelect}
           onToolRemove={handleToolRemove}

@@ -12,6 +12,7 @@ type ToolSuggestion = {
 
 type Props = {
   toolSuggestions: ToolSuggestion[];
+  allSuggestedTools: ToolSuggestion[];
   selectedTools: ToolSuggestion[];
   onToolSelect: (tool: ToolSuggestion) => void;
   onToolRemove: (tool: ToolSuggestion) => void;
@@ -19,6 +20,7 @@ type Props = {
 
 export default function ScenarioSidebar({
   toolSuggestions,
+  allSuggestedTools,
   selectedTools,
   onToolSelect,
   onToolRemove
@@ -34,7 +36,11 @@ export default function ScenarioSidebar({
         <h3 className="text-lg font-bold mb-3 text-green-600">Suggested Tools</h3>
         <div className="max-h-80 overflow-y-auto space-y-2">
           {toolSuggestions.length === 0 ? (
-            <p className="text-gray-500 text-sm italic">Tools will appear based on your choices</p>
+            allSuggestedTools.length === 0 ? (
+              <p className="text-gray-500 text-sm italic">Tools will appear based on your choices</p>
+            ) : (
+              <p className="text-gray-500 text-sm italic">All suggested tools have been added to your toolkit</p>
+            )
           ) : (
             toolSuggestions.slice().reverse().map((tool, index) => (
               <div
