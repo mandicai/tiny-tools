@@ -33,7 +33,7 @@ export default function ScenarioSidebar({
 
       {/* Tool Suggestions */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold mb-3 text-green-600">Suggested Tools</h3>
+        <h3 className="text-lg font-bold mb-3 text-green-600">Tools to Explore</h3>
         <div className="max-h-80 overflow-y-auto space-y-2">
           {toolSuggestions.length === 0 ? (
             allSuggestedTools.length === 0 ? (
