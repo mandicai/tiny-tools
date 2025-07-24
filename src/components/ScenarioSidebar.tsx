@@ -2,11 +2,6 @@
 
 import React, { useState } from 'react';
 
-type ChoiceHistory = {
-  nodeId: string;
-  choiceText: string;
-  nodeText: string;
-};
 
 type ToolSuggestion = {
   name: string;
@@ -16,7 +11,6 @@ type ToolSuggestion = {
 };
 
 type Props = {
-  choiceHistory: ChoiceHistory[];
   toolSuggestions: ToolSuggestion[];
   selectedTools: ToolSuggestion[];
   onToolSelect: (tool: ToolSuggestion) => void;
@@ -24,7 +18,6 @@ type Props = {
 };
 
 export default function ScenarioSidebar({
-  choiceHistory,
   toolSuggestions,
   selectedTools,
   onToolSelect,
@@ -34,23 +27,6 @@ export default function ScenarioSidebar({
 
   return (
     <div className="bg-white shadow rounded-lg p-6 h-fit">
-      {/* Progress Section */}
-      <div className="mb-6">
-        <h3 className="text-lg font-bold mb-3 text-indigo-600">Your Journey</h3>
-        <div className="flex items-center justify-center space-x-3">
-          {[1, 2, 3].map((step) => (
-            <div key={step} className="flex flex-col items-center">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${choiceHistory.length >= step
-                ? 'bg-indigo-600 border-indigo-600 text-white'
-                : 'border-gray-300 text-gray-400'
-                }`}>
-                {choiceHistory.length >= step ? '✓' : ''}
-              </div>
-              <div className="text-xs text-gray-500 mt-1">Choice {step}</div>
-            </div>
-          ))}
-        </div>
-      </div>
 
 
       {/* Tool Suggestions */}

@@ -116,6 +116,27 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
     <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
       <div>
         <div className="bg-white shadow rounded-lg p-6 mb-4">
+          {/* Progress Bar */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-600">Progress</span>
+              <span className="text-sm text-gray-500">{choiceHistory.length} / 3 choices</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="flex h-full rounded-full overflow-hidden">
+                {[1, 2, 3].map((step) => (
+                  <div
+                    key={step}
+                    className={`flex-1 ${step <= choiceHistory.length
+                      ? 'bg-indigo-600'
+                      : 'bg-gray-200'
+                    } ${step < 3 ? 'border-r border-white' : ''}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+          
           <p className="text-xl font-bold mb-2">The Scenario</p>
           <p className="text-l font-serif">
             {story}
@@ -139,7 +160,6 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
       </div>
       <div>
         <ScenarioSidebar
-          choiceHistory={choiceHistory}
           toolSuggestions={displayedToolSuggestions}
           selectedTools={selectedTools}
           onToolSelect={handleToolSelect}
