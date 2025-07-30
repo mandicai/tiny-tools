@@ -2,11 +2,6 @@
 
 import React, { useState } from 'react';
 
-type ChoiceHistory = {
-  nodeId: string;
-  choiceText: string;
-  nodeText: string;
-};
 
 type ToolSuggestion = {
   name: string;
@@ -16,101 +11,36 @@ type ToolSuggestion = {
 };
 
 type Props = {
-  choiceHistory: ChoiceHistory[];
   toolSuggestions: ToolSuggestion[];
+  allSuggestedTools: ToolSuggestion[];
   selectedTools: ToolSuggestion[];
   onToolSelect: (tool: ToolSuggestion) => void;
   onToolRemove: (tool: ToolSuggestion) => void;
 };
 
 export default function ScenarioSidebar({
-  choiceHistory,
   toolSuggestions,
+  allSuggestedTools,
   selectedTools,
   onToolSelect,
   onToolRemove
 }: Props) {
-  const [isLMDropdownOpen, setIsLMDropdownOpen] = useState(false);
   const [isToolkitDropdownOpen, setIsToolkitDropdownOpen] = useState(false);
 
   return (
     <div className="bg-white shadow rounded-lg p-6 h-fit">
-      {/* Language Models Info */}
-      <div className="mb-6">
-        <button
-          onClick={() => setIsLMDropdownOpen(!isLMDropdownOpen)}
-          className="w-full flex items-center justify-between p-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors"
-        >
-          <h3 className="text-lg font-bold text-blue-600">What can small language models do?</h3>
-          <span className={`text-blue-600 transition-transform ${isLMDropdownOpen ? 'rotate-180' : ''}`}>
-            ▼
-          </span>
-        </button>
-        {isLMDropdownOpen && (
-          <div className="mt-3 bg-white border border-blue-200 rounded-lg p-4">
-            <div className="mb-4">
-              <p className="text-sm text-gray-700 mb-3">
-                Small language models can run locally on your computer, giving you privacy and control.
-                They're great for:
-              </p>
-              <ul className="text-sm text-gray-700 space-y-1 mb-4">
-                <li>• Simple coding assistance and debugging</li>
-                <li>• Summarizing text</li>
-                <li>• Brainstorming and planning</li>
-                <li>• Offline AI without cloud dependency</li>
-              </ul>
-            </div>
-            <div className="border-t border-gray-200 pt-3">
-              <h4 className="font-semibold text-gray-800 mb-2">Try them out:</h4>
-              <div className="space-y-2 text-sm">
-                <div>
-                  <a href="https://aistudio.google.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
-                    Google AI Studio
-                  </a>
-                  <span className="text-gray-600"> - Free access to Gemma, Google's small LM</span>
-                </div>
-                <div>
-                  <a href="https://huggingface.co/spaces" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
-                    HuggingFace Spaces
-                  </a>
-                  <span className="text-gray-600"> - Try models online</span>
-                </div>
-                <div>
-                  <a href="https://lmstudio.ai" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 font-medium">
-                    LM Studio
-                  </a>
-                  <span className="text-gray-600"> - GUI for local models</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* Progress Section */}
-      <div className="mb-6">
-        <h3 className="text-lg font-bold mb-3 text-indigo-600">Your Journey</h3>
-        <div className="flex items-center justify-center space-x-3">
-          {[1, 2, 3].map((step) => (
-            <div key={step} className="flex flex-col items-center">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${choiceHistory.length >= step
-                ? 'bg-indigo-600 border-indigo-600 text-white'
-                : 'border-gray-300 text-gray-400'
-                }`}>
-                {choiceHistory.length >= step ? '✓' : ''}
-              </div>
-              <div className="text-xs text-gray-500 mt-1">Choice {step}</div>
-            </div>
-          ))}
-        </div>
-      </div>
 
 
       {/* Tool Suggestions */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold mb-3 text-green-600">Suggested Tools</h3>
+        <h3 className="text-lg font-bold mb-3 text-green-600">Tools to Explore</h3>
         <div className="max-h-80 overflow-y-auto space-y-2">
           {toolSuggestions.length === 0 ? (
-            <p className="text-gray-500 text-sm italic">Tools will appear based on your choices</p>
+            allSuggestedTools.length === 0 ? (
+              <p className="text-gray-500 text-sm italic">Tools will appear based on your choices</p>
+            ) : (
+              <p className="text-gray-500 text-sm italic">All suggested tools have been added to your toolkit</p>
+            )
           ) : (
             toolSuggestions.slice().reverse().map((tool, index) => (
               <div
