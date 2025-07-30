@@ -79,7 +79,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
                 <div className="text-4xl mb-4">{scenario.icon}</div>
                 <h3 className="text-2xl font-bold mb-3">{scenario.title}</h3>
                 <p className="text-gray-600 mb-4">{scenario.description}</p>
-                <button className="bg-blue-400 hover:bg-blue-500 text-white text-sm py-2 px-4 rounded transition-colors" style={{ fontFamily: 'var(--font-bowlby)' }}>
+                <button className="bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors">
                   Start →
                 </button>
               </div>

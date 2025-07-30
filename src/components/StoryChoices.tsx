@@ -46,21 +46,21 @@ export default function StoryChoices({
             {isEnding ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div>
-                        <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+                        <div className="bg-white rounded-lg p-6">
                             <h3 className="text-lg font-bold mb-4">Your Journey</h3>
                             <div className="space-y-4">
                                 {choiceHistory.length === 0 ? (
                                     <p className="text-gray-500 text-sm italic">No choices were made</p>
                                 ) : (
                                     choiceHistory.map((choice, index) => (
-                                        <div key={index} className="bg-white rounded-lg p-4 border-l-4 border-blue-400 shadow-sm">
+                                        <div key={index} className="bg-gradient-to-r from-blue-50 to-blue-50 rounded-lg p-4 border-l-4 border-blue-400 shadow-sm">
                                             <div className="flex items-start space-x-3">
                                                 <div className="flex-shrink-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                                                     <span className="text-white font-bold text-sm">{index + 1}</span>
                                                 </div>
                                                 <div className="flex-1">
-                                                    <div className="text-sm text-gray-800 mb-2">{choice.nodeText}</div>
-                                                    <div className="text-sm text-blue-700 bg-blue-50 p-3 rounded-lg font-mono">
+                                                    <div className="text-base text-gray-800 mb-2">{choice.nodeText}</div>
+                                                    <div className="text-sm bg-blue-50 p-3 rounded-lg font-mono">
                                                         ✓ {choice.choiceText}
                                                     </div>
                                                 </div>

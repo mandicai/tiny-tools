@@ -91,7 +91,7 @@ export default function ToolPlacemat({ selectedTools, scenarioTitle }: Props) {
   }, {} as Record<string, ToolSuggestion[]>);
 
   return (
-    <div className="bg-gray-50 rounded-lg p-6">
+    <div className="bg-white rounded-lg p-6">
       <h3 className="text-lg font-bold mb-4">Your Toolkit</h3>
 
       <div
@@ -108,7 +108,7 @@ export default function ToolPlacemat({ selectedTools, scenarioTitle }: Props) {
 
         {selectedTools.length === 0 ? (
           <div className="text-center text-gray-500 py-8">
-            <p>No tools were added to your toolkit during this scenario.</p>
+            <p className="text-sm">No tools were added to your toolkit during this scenario.</p>
             <p className="text-sm mt-2">Next time, try exploring the tool suggestions in the sidebar!</p>
           </div>
         ) : (
@@ -153,13 +153,13 @@ export default function ToolPlacemat({ selectedTools, scenarioTitle }: Props) {
       <div className="flex gap-2">
         <button
           onClick={downloadPlacemat}
-          className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+          className="bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors"
         >
           Download Toolkit
         </button>
         <button
           onClick={copyPlacemat}
-          className="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600"
+          className="bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors"
         >
           Copy to Clipboard
         </button>

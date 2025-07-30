@@ -87,13 +87,13 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
       <div className="max-w-6xl mx-auto">
         <div className="bg-white shadow rounded-lg p-8 mb-6">
           <div className="text-center mb-8">
-            <p className="text-2xl font-bold text-green-600 mb-4">🎉 Scenario Complete! 🎉</p>
-            <p className="text-lg text-gray-700">{node.text}</p>
+            <p className="text-2xl font-bold mb-4">🎉 Scenario Complete! 🎉</p>
+            <p className="text-base text-gray-700">{node.text}</p>
           </div>
           
           <button
             onClick={restart}
-            className="w-full max-w-md mx-auto block text-white font-bold py-3 px-6 rounded bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 transition-all"
+            className="w-full bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors" 
           >
             Restart Adventure
           </button>
@@ -152,7 +152,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
 
           <button
             onClick={restart}
-            className="w-full mt-4 py-2 rounded shadow text-blue-400 font-bold transition-colors bg-white hover:bg-gray-50"
+            className="w-full mt-4 bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors" 
           > 
             Restart Adventure
           </button>

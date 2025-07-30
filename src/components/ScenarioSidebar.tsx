@@ -79,16 +79,20 @@ export default function ScenarioSidebar({
       <div>
         <button
           onClick={() => setIsToolkitDropdownOpen(!isToolkitDropdownOpen)}
-          className="w-full flex items-center justify-between p-3 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-lg transition-colors"
+          className="w-full flex items-center justify-between rounded-lg p-3 bg-indigo-500 hover:bg-indigo-600 transition-colors"
         >
-          <h3 className="text-lg font-bold text-indigo-600">Your Toolkit</h3>
+          <h3 
+            className="text-lg font-bold text-indigo-600 text-white"
+            style={{ fontFamily: 'var(--font-bowlby)' }}>
+            Your Toolkit
+          </h3>
           <div className="flex items-center space-x-2">
             {selectedTools.length > 0 && (
               <span className="bg-indigo-500 text-white text-xs px-2 py-1 rounded-full">
                 {selectedTools.length}
               </span>
             )}
-            <span className={`text-indigo-600 transition-transform ${isToolkitDropdownOpen ? 'rotate-180' : ''}`}>
+            <span className={`text-white transition-transform ${isToolkitDropdownOpen ? 'rotate-180' : ''}`}>
               ▼
             </span>
           </div>

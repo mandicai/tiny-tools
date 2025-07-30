@@ -49,7 +49,7 @@ export default function HomePage() {
           <h1 className="text-5xl"><span className="font-bold text-4xl font-mono">tiny tools</span> <span className="text-3xl">for</span> <span className="text-blue-400" style={{ fontFamily: 'var(--font-bowlby)' }}>Big</span> Impact</h1>
           <button
             onClick={handleBackToIntro}
-            className="bg-white py-2 px-4 font-bold text-blue-400 rounded shadow border-2 border-transparent hover:border-blue-200 transition-colors cursor-pointer"
+            className="bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors" 
           >
             ← Intro
           </button>
