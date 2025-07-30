@@ -91,7 +91,7 @@ export default function ToolPlacemat({ selectedTools, scenarioTitle }: Props) {
   }, {} as Record<string, ToolSuggestion[]>);
 
   return (
-    <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
+    <div className="bg-gray-50 rounded-lg p-6">
       <h3 className="text-lg font-bold mb-4">Your Toolkit</h3>
 
       <div

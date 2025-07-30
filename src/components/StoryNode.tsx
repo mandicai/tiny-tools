@@ -115,11 +115,11 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
       <div>
-        <div className="bg-white shadow rounded-lg p-6 mb-4">
+        <div className="bg-white rounded-lg p-6 mb-4">
           {/* Progress Bar */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">Progress</span>
+              <span className="text-sm text-gray-600">Progress</span>
               <span className="text-sm text-gray-500">{choiceHistory.length} / 3 choices</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -152,8 +152,8 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
 
           <button
             onClick={restart}
-            className="mt-4 w-full text-white font-bold py-2 rounded bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800"
-          >
+            className="w-full mt-4 py-2 rounded shadow text-blue-400 font-bold transition-colors bg-white hover:bg-gray-50"
+          > 
             Restart Adventure
           </button>
         </div>
