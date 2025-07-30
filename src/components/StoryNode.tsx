@@ -88,7 +88,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
         <div className="bg-white shadow rounded-lg p-8 mb-6">
           <div className="text-center mb-8">
             <p className="text-2xl font-bold text-green-600 mb-4">🎉 Scenario Complete! 🎉</p>
-            <p className="text-lg font-serif text-gray-700">{node.text}</p>
+            <p className="text-lg text-gray-700">{node.text}</p>
           </div>
           
           <button
@@ -138,7 +138,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
           </div>
           
           <p className="text-xl font-bold mb-2">The Scenario</p>
-          <p className="text-l font-serif">
+          <p className="text-l">
             {story}
           </p>
           <StoryChoices

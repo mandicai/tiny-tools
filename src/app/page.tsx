@@ -42,13 +42,13 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50">
+    <main className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50" style={{ fontFamily: 'var(--font-ibm)' }}>
       <div className="w-full max-w-4xl mx-auto px-4">
         <div className="flex items-center justify-between py-6">
           <div className="flex items-center gap-4">
             <div>
-              <p className="text-4xl font-bold font-serif">Tiny Tools for Big Impact</p>
-              <p className="text-l font-serif pt-2">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
+              <p className="text-4xl font-bold">Tiny Tools for Big Impact</p>
+              <p className="text-l pt-2">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
             </div>
             <img src="/beaver.svg" alt="Tiny Tools for Big Impact logo featuring a beaver" className="w-30 h-auto" />
           </div>

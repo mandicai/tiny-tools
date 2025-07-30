@@ -34,14 +34,14 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-blue-50" style={{ fontFamily: 'var(--font-ibm)' }}>
       <div className="w-full max-w-4xl mx-auto px-4 py-8">
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <img src="/beaver.svg" alt="Tiny Tools for Big Impact logo" className="w-16 h-auto" />
-            <h1 className="text-5xl font-bold font-serif">Tiny Tools for Big Impact</h1>
+          <div className="flex items-center justify-center gap-4">
+            <img src="/beaver.svg" alt="Tiny Tools for Big Impact logo" className="w-25 h-auto" />
+            <h1 className="text-5xl font-bold">Tiny Tools for <span className="text-blue-400" style={{ fontFamily: 'var(--font-bowlby)' }}>Big</span> Impact</h1>
           </div>
-          <p className="text-xl font-serif text-gray-700 mb-8">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
+          <p className="text-lg text-gray-700 mb-8">By Nick Hagar, Mandi Cai, and Jeremy Gilbert</p>
 
           <div className="max-w-3xl mx-auto space-y-6">
             <p className="text-lg text-gray-600 text-left">
@@ -73,7 +73,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
         </div>
 
         <div className="mb-12">
-          <h2 className="text-3xl font-bold font-serif text-center mb-8">Choose Your Adventure</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">Choose Your Adventure</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {scenarios.map((scenario) => (
               <div
@@ -82,7 +82,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
                 onClick={() => onStartScenario(scenario.id)}
               >
                 <div className="text-4xl mb-4">{scenario.icon}</div>
-                <h3 className="text-2xl font-bold font-serif mb-3">{scenario.title}</h3>
+                <h3 className="text-2xl font-bold mb-3">{scenario.title}</h3>
                 <p className="text-gray-600 mb-4">{scenario.description}</p>
                 <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded transition-colors">
                   Start Scenario →
@@ -93,7 +93,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-          <h2 className="text-2xl font-bold font-serif mb-6">Additional Resources</h2>
+          <h2 className="text-2xl font-bold mb-6">Additional Resources</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <a
               href="https://github.com/NHagar/awesome-tiny-tools"

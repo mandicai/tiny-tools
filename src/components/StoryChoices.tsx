@@ -39,7 +39,7 @@ export default function StoryChoices({
             {!isEnding && (
                 <>
                     <p className="text-xl font-bold mb-2">Decision</p>
-                    <p className="text-l font-serif mb-4">{text}</p>
+                    <p className="text-l mb-4">{text}</p>
                 </>
             )}
 
