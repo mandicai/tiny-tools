@@ -6,6 +6,7 @@ import StoryNode from '@/components/StoryNode';
 import IntroPage from '@/components/IntroPage';
 
 export default function HomePage() {
+  // id of the current story, used to fetch the entire scenario w/ decisions (stored in scenario)
   const [currentStory, setCurrentStory] = useState<string | null>(null);
   const [showIntro, setShowIntro] = useState(true);
   const [scenario, setScenario] = useState<Scenario | null>(null);
