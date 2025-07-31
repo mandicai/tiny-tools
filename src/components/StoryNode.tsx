@@ -87,7 +87,7 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
       <div className="max-w-6xl mx-auto">
         <div className="bg-white shadow rounded-lg p-8 mb-6">
           <div className="text-center mb-8">
-            <p className="text-2xl font-bold mb-4">🎉 Scenario Complete! 🎉</p>
+            <p className="text-2xl font-bold text-blue-400 mb-4" style={{ fontFamily: 'var(--font-bowlby)' }}>🎉 Scenario Complete! 🎉</p>
             <p className="text-base text-gray-700">{node.text}</p>
           </div>
           

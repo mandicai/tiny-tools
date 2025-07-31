@@ -82,7 +82,7 @@ export default function ScenarioSidebar({
           className="w-full flex items-center justify-between rounded-lg p-3 bg-indigo-500 hover:bg-indigo-600 transition-colors"
         >
           <h3 
-            className="text-lg font-bold text-indigo-600 text-white"
+            className="text-lg font-bold text-indigo-600 text-white text-spaced"
             style={{ fontFamily: 'var(--font-bowlby)' }}>
             Your Toolkit
           </h3>
