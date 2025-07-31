@@ -90,15 +90,15 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
             <p className="text-2xl font-bold text-blue-400 mb-4" style={{ fontFamily: 'var(--font-bowlby)' }}>🎉 Scenario Complete! 🎉</p>
             <p className="text-base text-gray-700">{node.text}</p>
           </div>
-          
+
           <button
             onClick={restart}
-            className="w-full bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors" 
+            className="w-full bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors"
           >
             Restart Adventure
           </button>
         </div>
-        
+
         <StoryChoices
           text=""
           choices={[]}
@@ -113,59 +113,80 @@ export default function StoryNode({ story, decisions = [], scenarioTitle = '' }:
 
   // Normal view with sidebar
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
-      <div>
-        <div className="bg-white rounded-lg p-6 mb-4">
-          {/* Progress Bar */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm text-gray-600">Progress</span>
-              <span className="text-sm text-gray-500">{choiceHistory.length} / 3 choices</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div className="flex h-full rounded-full overflow-hidden">
-                {[1, 2, 3].map((step) => (
-                  <div
-                    key={step}
-                    className={`flex-1 ${step <= choiceHistory.length
-                      ? 'bg-indigo-600'
-                      : 'bg-gray-200'
-                    } ${step < 3 ? 'border-r border-white' : ''}`}
-                  />
-                ))}
+    <div className="w-full flex">
+      <aside className="w-200 text-sm sticky top-0 p-4 bg-blue-100 mb-4 mr-4 h-fit rounded-lg">
+        <p className="mb-4">As you navigate these scenarios, consider the following trade-offs:</p>
+        <div className="bg-white/80 rounded-lg p-6 text-left">
+          <ul className="space-y-2 text-gray-600">
+            <li className="flex items-start">
+              <span className="font-semibold text-indigo-600 mr-2">•</span>
+              <span><strong>Control vs. Convenience</strong>: Does this approach respect your autonomy?</span>
+            </li>
+            <li className="flex items-start">
+              <span className="font-semibold text-indigo-600 mr-2">•</span>
+              <span><strong>Privacy vs. Efficiency</strong>: How does this choice impact your data security?</span>
+            </li>
+            <li className="flex items-start">
+              <span className="font-semibold text-indigo-600 mr-2">•</span>
+              <span><strong>Quality vs. Time</strong>: Where are faster outputs more desirable than slower quality checks?</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-4">
+        <div>
+          <div className="bg-white rounded-lg p-6 mb-4">
+            {/* Progress Bar */}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-600">Progress</span>
+                <span className="text-sm text-gray-500">{choiceHistory.length} / 3 choices</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="flex h-full rounded-full overflow-hidden">
+                  {[1, 2, 3].map((step) => (
+                    <div
+                      key={step}
+                      className={`flex-1 ${step <= choiceHistory.length
+                        ? 'bg-indigo-600'
+                        : 'bg-gray-200'
+                        } ${step < 3 ? 'border-r border-white' : ''}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          
-          <p className="text-xl font-bold mb-2">The Scenario</p>
-          <p className="text-l">
-            {story}
-          </p>
-          <StoryChoices
-            text={node.text}
-            choices={node.choices}
-            onChoose={handleChoiceSelect}
-            choiceHistory={choiceHistory}
-            selectedTools={selectedTools}
-            scenarioTitle={scenarioTitle}
-          />
 
-          <button
-            onClick={restart}
-            className="w-full mt-4 bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors" 
-          > 
-            Restart Adventure
-          </button>
+            <p className="text-xl font-bold mb-2">The Scenario</p>
+            <p className="text-l">
+              {story}
+            </p>
+            <StoryChoices
+              text={node.text}
+              choices={node.choices}
+              onChoose={handleChoiceSelect}
+              choiceHistory={choiceHistory}
+              selectedTools={selectedTools}
+              scenarioTitle={scenarioTitle}
+            />
+
+            <button
+              onClick={restart}
+              className="w-full mt-4 bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors"
+            >
+              Restart Adventure
+            </button>
+          </div>
         </div>
-      </div>
-      <div>
-        <ScenarioSidebar
-          toolSuggestions={displayedToolSuggestions}
-          allSuggestedTools={allSuggestedTools}
-          selectedTools={selectedTools}
-          onToolSelect={handleToolSelect}
-          onToolRemove={handleToolRemove}
-        />
+        <div>
+          <ScenarioSidebar
+            toolSuggestions={displayedToolSuggestions}
+            allSuggestedTools={allSuggestedTools}
+            selectedTools={selectedTools}
+            onToolSelect={handleToolSelect}
+            onToolRemove={handleToolRemove}
+          />
+        </div>
       </div>
     </div>
   );

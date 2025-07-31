@@ -46,9 +46,9 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
           <p className="text-gray-600 text-left">
             Explore interactive scenarios that demonstrate how different approaches to AI and automation
             can transform journalism workflows. Each scenario presents real-world challenges with
-            multiple solution paths to compare and contrast. As you navigate these scenarios, consider the following trade-offs:
+            multiple solution paths to compare and contrast.
           </p>
-
+          {/* As you navigate these scenarios, consider the following trade-offs:
           <div className="bg-white/80 rounded-lg p-6 text-left">
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start">
@@ -64,7 +64,7 @@ export default function IntroPage({ onStartScenario }: IntroPageProps) {
                 <span><strong>Quality vs. Time</strong>: Where are faster outputs more desirable than slower quality checks?</span>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         <div className="my-6">

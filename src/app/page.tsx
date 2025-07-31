@@ -43,13 +43,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen" style={{ fontFamily: 'var(--font-ibm)' }}>
-      <div className="w-full max-w-4xl mx-auto text-center px-4 py-8">
+      <div className="w-full max-w-6xl mx-auto text-center px-4 py-8">
         <div className="flex items-center justify-center gap-4">
           <img src="/beaver.svg" alt="Tiny Tools for Big Impact logo featuring a beaver" className="w-25 h-auto" />
           <h1 className="text-5xl"><span className="font-bold text-4xl font-mono">tiny tools</span> <span className="text-3xl">for</span> <span className="text-blue-400" style={{ fontFamily: 'var(--font-bowlby)' }}>Big</span> Impact</h1>
           <button
             onClick={handleBackToIntro}
-            className="bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors" 
+            className="bg-indigo-400 hover:bg-indigo-500 font-bold text-white text-sm py-2 px-4 rounded transition-colors"
           >
             ← Intro
           </button>
@@ -60,9 +60,10 @@ export default function HomePage() {
           <p className="text-gray-600 text-left">
             Explore interactive scenarios that demonstrate how different approaches to AI and automation
             can transform journalism workflows. Each scenario presents real-world challenges with
-            multiple solution paths to compare and contrast. As you navigate these scenarios, consider the following trade-offs:
+            multiple solution paths to compare and contrast.
           </p>
 
+          {/* As you navigate these scenarios, consider the following trade-offs:
           <div className="bg-white/80 rounded-lg p-6 text-left">
             <ul className="space-y-2 text-gray-600">
               <li className="flex items-start">
@@ -78,18 +79,16 @@ export default function HomePage() {
                 <span><strong>Quality vs. Time</strong>: Where are faster outputs more desirable than slower quality checks?</span>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
-        <div className="w-full">
-          {scenario && (
-            <StoryNode
-              story={scenario.story}
-              decisions={scenario.decisions}
-              scenarioTitle={scenario.title}
-            />
-          )}
-        </div>
+        {scenario && (
+          <StoryNode
+            story={scenario.story}
+            decisions={scenario.decisions}
+            scenarioTitle={scenario.title}
+          />
+        )}
       </div>
     </div>
   );

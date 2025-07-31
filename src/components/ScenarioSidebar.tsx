@@ -28,7 +28,7 @@ export default function ScenarioSidebar({
   const [isToolkitDropdownOpen, setIsToolkitDropdownOpen] = useState(false);
 
   return (
-    <div className="bg-white rounded-lg p-6 h-fit">
+    <div className="bg-white rounded-lg p-6 h-fit sticky top-0">
       <div className="mb-6">
         <h3 className="text-lg font-bold mb-3">Tools to Explore</h3>
         <div className="max-h-80 overflow-y-auto space-y-2">
