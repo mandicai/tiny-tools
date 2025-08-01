@@ -44,7 +44,6 @@ export default function ScenarioSidebar({
                 key={`${tool.name}-${index}`}
                 className="border border-indigo-200 rounded p-3 hover:bg-indigo-50 transition-all duration-300 ease-in-out opacity-0 translate-y-2 animate-[fadeInSlide_0.3s_ease-out_forwards]"
                 style={{ animationDelay: `${index * 50}ms` }}
-                onClick={() => onToolSelect(tool)}
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -55,7 +54,10 @@ export default function ScenarioSidebar({
                     </span>
                   </div>
                   <button
-                    onClick={() => onToolSelect(tool)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onToolSelect(tool);
+                    }}
                     className="ml-2 bg-indigo-500 hover:bg-indigo-600 text-white text-xs px-3 py-1 rounded transition-colors"
                   >
                     Add
