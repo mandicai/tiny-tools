@@ -7,16 +7,19 @@ import ScenarioSidebar from './ScenarioSidebar';
 import { getToolSuggestionsForChoice, type ToolSuggestion } from '@/data/toolSuggestions';
 
 type Choice = { text: string; next: string };
+
 type Decision = {
   id: string;
   text: string;
   choices?: Choice[];
 }
+
 type ChoiceHistory = {
   nodeId: string;
   choiceText: string;
   nodeText: string;
 };
+
 type Props = {
   story: string;
   decisions?: Decision[];

@@ -25,6 +25,10 @@ export interface ScenarioMeta {
   icon: string;
 }
 
+export interface IntroPageProps {
+  onStartScenario: (scenarioId: string) => void;
+}
+
 export async function getScenarioMeta(): Promise<ScenarioMeta[]> {
   try {
     const response = await fetch('/api/scenarios');
