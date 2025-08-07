@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getScenarioMeta, type ScenarioMeta } from '@/lib/scenarios';
-
-interface IntroPageProps {
-  onStartScenario: (scenarioId: string) => void;
-}
+import { IntroPageProps } from '@/lib/scenarios';
 
 export default function IntroPage({ onStartScenario }: IntroPageProps) {
   const [scenarios, setScenarios] = useState<ScenarioMeta[]>([]);

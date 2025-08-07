@@ -2,15 +2,7 @@ import { NextResponse } from 'next/server';
 import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
-
-interface Scenario {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  story: string;
-  decisions: any[];
-}
+import { Scenario } from '@/lib/scenarios';
 
 export async function GET() {
   try {
