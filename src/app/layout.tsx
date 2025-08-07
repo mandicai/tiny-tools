@@ -1,22 +1,24 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/globals.css";
+import type { Metadata } from 'next';
+import '@/styles/globals.css';
+import { IBM_Plex_Sans, Bowlby_One_SC } from 'next/font/google';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const ibm = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-ibm',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const bowlby = Bowlby_One_SC({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-bowlby',
 });
 
 export const metadata: Metadata = {
-  title: "Tiny Tools for Big Impact",
-  description: "Explore interactive scenarios that demonstrate how different approaches to AI and automation can transform journalism workflows.",
+  title: 'Tiny Tools for Big Impact',
+  description: 'Explore interactive scenarios that demonstrate how different approaches to AI and automation can transform journalism workflows.',
   icons: {
-    icon: "/beaver.svg",
+    icon: '/beaver.svg',
   },
 };
 
@@ -26,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${ibm.variable} ${bowlby.variable} antialiased`}
       >
         {children}
       </body>
